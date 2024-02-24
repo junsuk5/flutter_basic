@@ -2,9 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import 'firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
@@ -76,11 +80,11 @@ class _TodoListPageState extends State<TodoListPage> {
                 if (!snapshot.hasData) {
                   return CircularProgressIndicator();
                 }
-                final documents = snapshot.data.docs;
+                final documents = snapshot.data?.docs;
                 return Expanded(
                   child: ListView(
                     children:
-                        documents.map((doc) => _buildItemWidget(doc)).toList(),
+                        documents!.map((doc) => _buildItemWidget(doc)).toList(),
                   ),
                 );
               },
