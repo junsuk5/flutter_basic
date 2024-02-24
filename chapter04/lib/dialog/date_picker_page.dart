@@ -7,7 +7,7 @@ class DatePickerPage extends StatefulWidget {
 }
 
 class _DatePickerPageState extends State<DatePickerPage> {
-  DateTime _selectedTime;
+  DateTime? _selectedTime;
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +28,15 @@ class _DatePickerPageState extends State<DatePickerPage> {
         children: <Widget>[
           ElevatedButton(
             onPressed: () {
-              Future<DateTime> selectedDate = showDatePicker(
+              Future<DateTime?> selectedDate = showDatePicker(
                 context: context,
                 initialDate: DateTime.now(), // 초깃값
                 firstDate: DateTime(2018), // 시작일
                 lastDate: DateTime(2030), // 마지막일
-                builder: (BuildContext context, Widget child) {
+                builder: (BuildContext context, Widget? child) {
                   return Theme(
                     data: ThemeData.dark(), // 다크테마
-                    child: child,
+                    child: child!,
                   );
                 },
               );

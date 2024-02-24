@@ -12,15 +12,16 @@ class Banner {
   String imageUrl;
   Color color;
 
-  Banner(
-      {this.text1,
-      this.text1Color = Colors.black,
-      this.text2,
-      this.text2Color = Colors.black,
-      this.text3,
-      this.text3color = Colors.black,
-      this.imageUrl,
-      this.color});
+  Banner({
+    required this.text1,
+    this.text1Color = Colors.black,
+    required this.text2,
+    this.text2Color = Colors.black,
+    required this.text3,
+    this.text3color = Colors.black,
+    required this.imageUrl,
+    required this.color,
+  });
 }
 
 class SnsStylePage extends StatefulWidget {
@@ -267,7 +268,7 @@ class ThirdPage extends StatelessWidget {
 class CardBanner extends StatelessWidget {
   final Banner banner;
 
-  CardBanner({Key key, this.banner}) : super(key: key);
+  const CardBanner({super.key, required this.banner});
 
   @override
   Widget build(BuildContext context) {

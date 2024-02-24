@@ -7,7 +7,7 @@ class TimePickerPage extends StatefulWidget {
 }
 
 class _TimePickerPageState extends State<TimePickerPage> {
-  String _selectedTime;
+  String? _selectedTime;
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +28,16 @@ class _TimePickerPageState extends State<TimePickerPage> {
         children: <Widget>[
           ElevatedButton(
             onPressed: () {
-              Future<TimeOfDay> selectedTime = showTimePicker(
+              Future<TimeOfDay?> selectedTime = showTimePicker(
                 initialTime: TimeOfDay.now(),
                 context: context,
               );
 
               selectedTime.then((timeOfDay) {
+                if (timeOfDay == null) {
+                  return;
+                }
+
                 setState(() {
                   _selectedTime = '${timeOfDay.hour}:${timeOfDay.minute}';
                 });

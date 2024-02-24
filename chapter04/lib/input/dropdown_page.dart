@@ -40,7 +40,7 @@ class _DropdownPageState extends State<DropdownPage> {
             ).toList(),
             onChanged: (value) {
               setState(() {
-                _selectedValue = value;
+                _selectedValue = value!;
               });
             },
           ),

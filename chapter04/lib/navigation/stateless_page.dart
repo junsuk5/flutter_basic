@@ -44,7 +44,7 @@ class FirstPage extends StatelessWidget {
 class SecondPage extends StatelessWidget {
   final Person person;
 
-  SecondPage({Key key, @required this.person}) : super(key: key);
+  const SecondPage({super.key, required this.person});
 
   @override
   Widget build(BuildContext context) {

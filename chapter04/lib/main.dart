@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        useMaterial3: false,
       ),
       home: MenuPage(),
     );
@@ -156,9 +157,9 @@ class MenuPage extends StatelessWidget {
   }
 }
 
-launchURL(String url) async {
-  if (await canLaunch(url)) {
-    await launch(url);
+Future<void> launchURL(String url) async {
+  if (await canLaunchUrl(Uri.parse(url))) {
+    await launchUrl(Uri.parse(url));
   } else {
     throw 'Could not launch $url';
   }

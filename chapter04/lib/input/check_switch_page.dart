@@ -34,7 +34,7 @@ class _CheckRadioSwitchPageState extends State<CheckRadioSwitchPage> {
                 value: _isChecked,
                 onChanged: (value) {
                   setState(() {
-                    _isChecked = value;
+                    _isChecked = value!;
                   });
                 },
               ),

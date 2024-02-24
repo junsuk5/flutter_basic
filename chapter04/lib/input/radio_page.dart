@@ -40,7 +40,7 @@ class _RadioPageState extends State<RadioPage> {
                   groupValue: _gender,
                   onChanged: (value) {
                     setState(() {
-                      _gender = value;
+                      _gender = value!;
                     });
                   },
                 ),
@@ -52,7 +52,7 @@ class _RadioPageState extends State<RadioPage> {
                   groupValue: _gender,
                   onChanged: (value) {
                     setState(() {
-                      _gender = value;
+                      _gender = value!;
                     });
                   },
                 ),
@@ -66,7 +66,7 @@ class _RadioPageState extends State<RadioPage> {
                 groupValue: _gender,
                 onChanged: (value) {
                   setState(() {
-                    _gender = value;
+                    _gender = value!;
                   });
                 },
               ),
@@ -76,7 +76,7 @@ class _RadioPageState extends State<RadioPage> {
                 groupValue: _gender,
                 onChanged: (value) {
                   setState(() {
-                    _gender = value;
+                    _gender = value!;
                   });
                 },
               ),

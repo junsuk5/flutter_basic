@@ -9,17 +9,10 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-  TextEditingController _email;
-  TextEditingController _password;
+  TextEditingController _email = TextEditingController(text: "");
+  TextEditingController _password = TextEditingController(text: "");
 
   final _formKey = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    super.initState();
-    _email = TextEditingController(text: "");
-    _password = TextEditingController(text: "");
-  }
 
   @override
   void dispose() {
@@ -56,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: TextFormField(
                     controller: _email,
                     validator: (value) =>
-                        (value.isEmpty) ? "이메일을 입력해 주세요" : null,
+                        (value!.isEmpty) ? "이메일을 입력해 주세요" : null,
                     style: style,
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.email),
@@ -69,8 +62,11 @@ class _LoginPageState extends State<LoginPage> {
                   child: TextFormField(
                     obscureText: true,
                     controller: _password,
-                    validator: (value) =>
-                        (value.isEmpty) ? "패스워드를 입력해 주세요" : null,
+                    validator: (value) {
+                      return (value != null && value.isEmpty)
+                          ? "패스워드를 입력해 주세요"
+                          : null;
+                    },
                     style: style,
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.lock),
@@ -86,9 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.red,
                     child: MaterialButton(
                       onPressed: () {
-                        if (_formKey.currentState.validate()) {
-
-                        }
+                        if (_formKey.currentState!.validate()) {}
                       },
                       child: Text(
                         "Email 로그인",
@@ -151,19 +145,11 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-  TextEditingController _email;
-  TextEditingController _password;
-  TextEditingController _password2;
+  TextEditingController _email = TextEditingController(text: "");
+  TextEditingController _password = TextEditingController(text: "");
+  TextEditingController _password2 = TextEditingController(text: "");
   final _formKey = GlobalKey<FormState>();
   final _key = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-    _email = TextEditingController(text: "");
-    _password = TextEditingController(text: "");
-    _password2 = TextEditingController(text: "");
-  }
 
   @override
   void dispose() {
@@ -191,7 +177,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: TextFormField(
                   controller: _email,
                   validator: (value) =>
-                  (value.isEmpty) ? "이메일을 입력 해 주세요" : null,
+                      (value != null && value.isEmpty) ? "이메일을 입력 해 주세요" : null,
                   style: style,
                   decoration: InputDecoration(
                       prefixIcon: Icon(Icons.email),
@@ -205,7 +191,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   obscureText: true,
                   controller: _password,
                   validator: (value) =>
-                  (value.isEmpty) ? "패스워드를 입력 해 주세요" : null,
+                      (value != null && value.isEmpty) ? "패스워드를 입력 해 주세요" : null,
                   style: style,
                   decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock),
@@ -219,7 +205,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   obscureText: true,
                   controller: _password2,
                   validator: (value) =>
-                  (value != _password.text) ? "패스워드가 다릅니다" : null,
+                      (value != _password.text) ? "패스워드가 다릅니다" : null,
                   style: style,
                   decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock),
@@ -235,7 +221,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   color: Colors.red,
                   child: MaterialButton(
                     onPressed: () async {
-                      if (_formKey.currentState.validate()) {
+                      if (_formKey.currentState!.validate()) {
                         Navigator.pop(context);
                       }
                     },
