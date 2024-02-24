@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'StopWatch',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        useMaterial3: false,
       ),
       home: StopWatchPage(),
     );
@@ -19,14 +20,12 @@ class MyApp extends StatelessWidget {
 }
 
 class StopWatchPage extends StatefulWidget {
-  StopWatchPage({Key key}) : super(key: key);
-
   @override
   _StopWatchPageState createState() => _StopWatchPageState();
 }
 
 class _StopWatchPageState extends State<StopWatchPage> {
-  Timer _timer; // 타이머
+  Timer? _timer; // 타이머
 
   var _time = 0; // 0.01초 마다 1씩 증가시킬 변수
   var _isRunning = false; // 현재 시작
@@ -157,5 +156,4 @@ class _StopWatchPageState extends State<StopWatchPage> {
   void _recordLapTime(String time) {
     _lapTimes.insert(0, '${_lapTimes.length + 1}등 $time');
   }
-
 }
