@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        useMaterial3: false,
       ),
       home: FirstPage(),   // 첫 페이지를 시작 페이지로 지정
     );
