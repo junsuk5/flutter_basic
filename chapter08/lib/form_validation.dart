@@ -38,7 +38,7 @@ class MyCustomFormState extends State<MyCustomForm> {
         children: <Widget>[
           TextFormField(
             validator: (value) {
-              if (value.isEmpty) {
+              if (value != null && value.isEmpty) {
                 return '글자를 입력하세요';
               }
               return null;
@@ -49,7 +49,7 @@ class MyCustomFormState extends State<MyCustomForm> {
             child: ElevatedButton(
               onPressed: () {
                 // 폼을 검증하여 통과는 true, 실패는 false를 리턴
-                if (_formKey.currentState.validate()) {
+                if (_formKey.currentState!.validate()) {
                   // 검증이 통과하면 스낵바를 표시
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text('검증 완료')));

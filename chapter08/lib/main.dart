@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        useMaterial3: false,
       ),
       home: BmiMain(),
     );
@@ -52,7 +53,7 @@ class _BmiMainState extends State<BmiMain> {
                 controller: _heightController,
                 keyboardType: TextInputType.number,
                 validator: (value) {
-                  if (value.trim().isEmpty) {
+                  if (value != null && value.trim().isEmpty) {
                     return '키를 입력해 주세요';
                   }
                   return null;
@@ -69,7 +70,7 @@ class _BmiMainState extends State<BmiMain> {
                 controller: _weightController,
                 keyboardType: TextInputType.number,
                 validator: (value) {
-                  if (value.trim().isEmpty) {
+                  if (value != null && value.trim().isEmpty) {
                     return '몸무게를 입력해 주세요';
                   }
                   return null;
@@ -80,7 +81,7 @@ class _BmiMainState extends State<BmiMain> {
                 alignment: Alignment.centerRight,
                 child: ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState.validate()) {
+                    if (_formKey.currentState!.validate()) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
